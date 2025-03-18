@@ -2,6 +2,12 @@ import { useRef, useState } from "react";
 import Header from "./Header";
 import { validateLoginInputField } from "../utils/validate";
 import { NETFLIX_BACKGROUND_IMG } from "../utils/constants";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(false);
@@ -21,7 +27,62 @@ const Login = () => {
       password.current.value
     );
     setIsError(message);
+
+    if (!message) {
+      if (!isSignInForm) {
+        // manage SignIn/SignUp Logic
+        createUserWithEmailAndPassword(
+          auth,
+          email.current.value,
+          password.current.value
+        )
+          .then((userCredential) => {
+            // Signed up
+            const user = userCredential.user;
+
+            updateProfile(user, {
+              displayName: fullName.current.value,
+            })
+              .then(() => {
+                // Update user profile with full name
+                console.log(user);
+                // ...
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setIsError(errorCode + " " + errorMessage);
+                // ..
+              });
+
+            console.log(user);
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setIsError(errorCode + " " + errorMessage);
+          });
+      } else {
+        signInWithEmailAndPassword(
+          auth,
+          email.current.value,
+          password.current.value
+        )
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log(user);
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setIsError(errorCode + " " + errorMessage);
+          });
+      }
+    }
   };
+
   return (
     <div>
       <Header />
