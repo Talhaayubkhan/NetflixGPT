@@ -21,8 +21,14 @@ const Login = () => {
   };
 
   const handleButton = () => {
+    let fullNameValue;
+    if (!isSignInForm) {
+      fullNameValue = fullName.current.value; // Sign-up mode, fullName exists
+    } else {
+      fullNameValue = null; // Sign-in mode, no fullName input
+    }
     const message = validateLoginInputField(
-      fullName.current.value,
+      fullNameValue,
       email.current.value,
       password.current.value
     );
@@ -44,18 +50,16 @@ const Login = () => {
               displayName: fullName.current.value,
             })
               .then(() => {
-                // Update user profile with full name
-                console.log(user);
-                // ...
+                // Update successful.
+                console.log("User profile updated!");
+                //...
               })
               .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                setIsError(errorCode + " " + errorMessage);
+                setIsError(error.code + " " + error.message);
                 // ..
               });
 
-            console.log(user);
+            // console.log(user);
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -71,7 +75,7 @@ const Login = () => {
           .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            console.log(user);
+            // console.log("User Sign In", user);
             // ...
           })
           .catch((error) => {
