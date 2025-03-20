@@ -1,16 +1,21 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
 import { validateLoginInputField } from "../utils/validate";
-import { NETFLIX_BACKGROUND_IMG } from "../utils/constants";
+import { NETFLIX_BACKGROUND_IMG, NETFLIX_USER_ICON } from "../utils/constants";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { addUser } from "../utils/userSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isError, setIsError] = useState("");
   const fullName = useRef(null);
   const email = useRef(null);
@@ -45,14 +50,22 @@ const Login = () => {
           .then((userCredential) => {
             // Signed up
             const user = userCredential.user;
-
             updateProfile(user, {
               displayName: fullName.current.value,
+              photoURL:
+                "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg",
             })
               .then(() => {
                 // Update successful.
-                console.log("User profile updated!");
-                //...
+                const { uid, email, displayName, photoURL } = auth.currentUser;
+                dispatch(
+                  addUser({
+                    uid,
+                    email,
+                    displayName,
+                    photoURL,
+                  })
+                );
               })
               .catch((error) => {
                 setIsError(error.code + " " + error.message);
@@ -75,8 +88,6 @@ const Login = () => {
           .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            // console.log("User Sign In", user);
-            // ...
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -90,12 +101,16 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="absolute">
-        <img src={NETFLIX_BACKGROUND_IMG} alt="logo" />
+      <div className="absolute w-screen h-screen">
+        <img
+          src={NETFLIX_BACKGROUND_IMG}
+          className="w-full h-full object-cover"
+          alt="logo"
+        />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute w-3/12 my-36 mx-auto right-0 left-0 p-12 bg-black text-white rounded-2xl opacity-75"
+        className="absolute w-3/12 my-36 mx-auto right-0 left-0 p-10 bg-black text-white rounded-lg opacity-70"
       >
         <h1 className="font-bold text-4xl py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
