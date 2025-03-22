@@ -6,3 +6,17 @@ export const NETFLIX_LOGO_URL =
 
 export const NETFLIX_USER_ICON =
   "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg";
+
+export const NETFLIX_AVATAR_URL =
+  "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg";
+
+export const fetchNowPlayingMovies =
+  "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
+
+export const API_OPTIONS = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization: `Bearer ${import.meta.env.VITE_FIREBASE_API_OPTIONS_AUTH}`,
+  },
+};

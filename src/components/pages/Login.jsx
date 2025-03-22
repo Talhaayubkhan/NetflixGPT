@@ -1,7 +1,11 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
 import { validateLoginInputField } from "../utils/validate";
-import { NETFLIX_BACKGROUND_IMG, NETFLIX_USER_ICON } from "../utils/constants";
+import {
+  NETFLIX_AVATAR_URL,
+  NETFLIX_BACKGROUND_IMG,
+  NETFLIX_USER_ICON,
+} from "../utils/constants";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -13,10 +17,10 @@ import { addUser } from "../utils/userSlice";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
-  const [isSignInForm, setIsSignInForm] = useState(false);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [isError, setIsError] = useState("");
+  const [isSignInForm, setIsSignInForm] = useState(false);
+  const dispatch = useDispatch();
+
   const fullName = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
@@ -52,8 +56,7 @@ const Login = () => {
             const user = userCredential.user;
             updateProfile(user, {
               displayName: fullName.current.value,
-              photoURL:
-                "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg",
+              photoURL: NETFLIX_AVATAR_URL,
             })
               .then(() => {
                 // Update successful.
@@ -110,7 +113,7 @@ const Login = () => {
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute w-3/12 my-36 mx-auto right-0 left-0 p-10 bg-black text-white rounded-lg opacity-70"
+        className="absolute w-3/12 my-28 mx-auto right-0 left-0 p-6 bg-black text-white rounded-lg opacity-70"
       >
         <h1 className="font-bold text-4xl py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}

@@ -18,14 +18,14 @@ const Header = () => {
         dispatch(removeUser());
         navigate("/login");
       })
-      .catch((error) => {
+      .catch(() => {
         // An error happened.
-        console.error("Error signing out:", error);
+        navigate("/Errors");
       });
   };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName, photoURL } = user;
         dispatch(
@@ -42,6 +42,8 @@ const Header = () => {
         navigate("/login");
       }
     });
+
+    return () => unsubscribe(); // Clean up subscription when component unmounts
   }, []);
 
   return (
