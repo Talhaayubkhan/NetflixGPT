@@ -53,7 +53,7 @@ const Header = () => {
         <div className="flex items-center gap-3 ml-auto">
           <img src={user} alt="logo_url" className="w-10 h-10" />
           <button
-            className="border-1 bg-black border-black px-6 py-2 text-white font-bold rounded-md cursor-pointer"
+            className="border-1 bg-white border-black px-4 py-2 text-black text-lg font-bold rounded-md cursor-pointer"
             onClick={handleSignOut}
           >
             Sign Out

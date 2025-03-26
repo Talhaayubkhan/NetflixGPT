@@ -11,7 +11,7 @@ const MainContainer = () => {
   const { original_title, overview, id } = videos[0];
 
   return (
-    <div className="w-screen aspect-video">
+    <div>
       <VideoTitle title={original_title} overview={overview} />
       <VideoBackground videoId={id} />
     </div>

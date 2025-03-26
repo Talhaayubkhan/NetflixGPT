@@ -3,7 +3,7 @@ import { GoInfo } from "react-icons/go";
 
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className="w-screen aspect-video pt-[17%] px-25 absolute text-white bg-gradient-to-r from-black">
+    <div className="w-screen aspect-video pt-[15%] px-25 absolute text-white bg-gradient-to-r from-black">
       <h1 className="text-6xl font-bold">{title}</h1>
       <p className="text-lg w-2/5 mt-5">{overview}</p>
       <div className="mt-5">
