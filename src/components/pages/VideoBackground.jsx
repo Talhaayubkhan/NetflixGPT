@@ -12,7 +12,7 @@ const VideoBackground = ({ videoId }) => {
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
-        frameborder="0"
+        frameBorder="0"
         allowFullScreen
       ></iframe>
     </div>

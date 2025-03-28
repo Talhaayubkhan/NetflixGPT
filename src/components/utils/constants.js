@@ -20,3 +20,5 @@ export const API_OPTIONS = {
     Authorization: `Bearer ${import.meta.env.VITE_FIREBASE_API_OPTIONS_AUTH}`,
   },
 };
+
+export const IMG_URL = "https://image.tmdb.org/t/p/w300";
