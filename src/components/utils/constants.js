@@ -13,6 +13,9 @@ export const NETFLIX_AVATAR_URL =
 export const fetchNowPlayingMovies =
   "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
 
+export const fetchPopularMovies =
+  "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
+
 export const API_OPTIONS = {
   method: "GET",
   headers: {
@@ -21,4 +24,4 @@ export const API_OPTIONS = {
   },
 };
 
-export const IMG_URL = "https://image.tmdb.org/t/p/w300";
+export const IMG_URL = "https://image.tmdb.org/t/p/w500";
