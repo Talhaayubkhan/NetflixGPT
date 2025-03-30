@@ -16,6 +16,15 @@ export const fetchNowPlayingMovies =
 export const fetchPopularMovies =
   "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
 
+export const fetchTopRatedMovies =
+  "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
+
+export const fetchUpCommingMovies =
+  "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
+
+export const fetchTrendingMovies =
+  "https://api.themoviedb.org/3/trending/all/day?language=en-US";
+
 export const API_OPTIONS = {
   method: "GET",
   headers: {

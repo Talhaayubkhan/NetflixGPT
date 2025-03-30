@@ -15,10 +15,12 @@ export const useTrailerVideo = (videoId) => {
     const trailerVideos = jsonResponse?.results?.filter(
       (trailer) => trailer.type === "Trailer"
     );
+    // console.log(trailerVideos);
+
     const firstTrailerVideo = trailerVideos.length
       ? trailerVideos[0]
       : jsonResponse.results[0];
-    // console.log(getFirstTrailerVideo);
+    // console.log(firstTrailerVideo);
     dispatch(addTrailerVideo(firstTrailerVideo));
   };
 

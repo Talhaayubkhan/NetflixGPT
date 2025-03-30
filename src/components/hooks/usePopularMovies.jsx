@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { API_OPTIONS, fetchPopularMovies } from "../utils/constants";
+import { fetchPopularMovies, API_OPTIONS } from "../utils/constants";
 import { addPopularMovies } from "../utils/movieSlice";
 import { useEffect } from "react";
 
@@ -8,7 +8,7 @@ const usePopularMovies = () => {
   const getPopularMovies = async () => {
     const data = await fetch(fetchPopularMovies, API_OPTIONS);
     const jsonData = await data.json();
-    console.log(jsonData.results);
+    // console.log(jsonData.results);
     dispatch(addPopularMovies(jsonData.results));
   };
 
