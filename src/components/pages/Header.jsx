@@ -5,11 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useEffect } from "react";
+import { toggleGPT } from "../utils/gptSilce";
 
 const Header = () => {
   const user = useSelector((store) => store.user?.photoURL);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSignOut = () => {
     signOut(auth)
@@ -22,6 +23,10 @@ const Header = () => {
         // An error happened.
         navigate("/Errors");
       });
+  };
+
+  const handleToggleSwitch = () => {
+    dispatch(toggleGPT());
   };
 
   useEffect(() => {
@@ -48,9 +53,15 @@ const Header = () => {
 
   return (
     <div className="absolute px-10 py-4 w-screen bg-gradient-to-b from-black z-20 flex">
-      <img src={NETFLIX_LOGO_URL} alt="logo_url" className="w-48 " />
+      <img src={NETFLIX_LOGO_URL} alt="logo_url" className="w-52" />
       {user && (
         <div className="flex items-center gap-3 ml-auto">
+          <button
+            className="border-1 bg-purple-700 border-black px-4 py-2 text-white text-lg font-bold rounded-md cursor-pointer"
+            onClick={handleToggleSwitch}
+          >
+            GPT Search
+          </button>
           <img src={user} alt="logo_url" className="w-10" />
           <button
             className="border-1 bg-white border-black px-4 py-2 text-black text-lg font-bold rounded-md cursor-pointer"

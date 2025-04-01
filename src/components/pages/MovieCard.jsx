@@ -4,7 +4,7 @@ import { IMG_URL } from "../utils/constants";
 const MovieCard = ({ posterPath }) => {
   return (
     <>
-      <div className="w-60 cursor-pointer">
+      <div className="w-64 cursor-pointer">
         <img
           src={`${IMG_URL}${posterPath}`}
           alt="movie_poster"

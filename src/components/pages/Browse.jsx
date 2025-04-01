@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import usePopularMovies from "../hooks/usePopularMovies";
 import useTopRatedMovies from "../hooks/useTopRatedMovies";
@@ -6,8 +7,10 @@ import useUpCommingMovies from "../hooks/useUpCommingMovies";
 import Header from "./Header";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
+import GPTSearch from "./GPTSearch";
 
 const Browse = () => {
+  const toggleSwitchClick = useSelector((store) => store.gpt?.toggleSwitch);
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
@@ -16,8 +19,15 @@ const Browse = () => {
   return (
     <div>
       <Header />
-      <MainContainer />
-      <SecondaryContainer />
+
+      {toggleSwitchClick ? (
+        <GPTSearch />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      )}
     </div>
   );
 };
