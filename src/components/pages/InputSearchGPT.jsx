@@ -1,19 +1,24 @@
 import { FaSearch } from "react-icons/fa";
+import { langConst } from "../utils/languageConstants";
+import { useSelector } from "react-redux";
 const InputSearchGPT = () => {
+  const currentLang = useSelector((store) => store?.lang?.currentLang);
   return (
-    <div className="pt-[10%] px-4 md:px-6 lg:px-8 min-h-[50vh] flex flex-col items-center">
-      <form className="w-full max-w-3xl mx-auto">
-        <div className="flex flex-col md:flex-row gap-4 p-6 bg-black/80 rounded-lg shadow-2xl border border-gray-700">
+    <div className="pt-[18%]">
+      <form className="w-1/2 m-auto">
+        <div className="flex flex-row gap-3 p-3.5 bg-black rounded-lg shadow-xl">
           <input
             type="text"
-            placeholder="What would you like to watch today?"
-            className="flex-grow px-5 py-4 bg-black text-white rounded-md border border-gray-700 focus:border-red-600 focus:ring-2 focus:ring-red-600 focus:outline-none transition-all duration-200 placeholder-gray-400"
+            placeholder={langConst[currentLang]?.gptSearchPlaceHolder}
+            className="flex-grow px-4 py-2 bg-white text-black rounded-lg"
           />
           <button
             type="submit"
-            className="bg-white hover:bg-red-700 text-black font-medium px-6 py-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2"
+            className="bg-red-800 text-white font-bold px-5 py-4 rounded-lg flex items-center justify-center gap-2"
           >
-            <span className="font-bold text-xl">Search</span>
+            <span className="font-bold text-lg">
+              {langConst[currentLang]?.search}
+            </span>
             <FaSearch className="text-xl" />
           </button>
         </div>

@@ -6,7 +6,13 @@ import { NETFLIX_BACKGROUND_IMG } from "../utils/constants";
 const GPTSearch = () => {
   return (
     <div>
-      <img src={NETFLIX_BACKGROUND_IMG} alt="bg_img" />
+      <div className="absolute -z-10 w-screen">
+        <img
+          src={NETFLIX_BACKGROUND_IMG}
+          alt="bg_img"
+          className="w-full object-cover"
+        />
+      </div>
       <InputSearchGPT />
       <GPTMoviesSuggestions />
     </div>

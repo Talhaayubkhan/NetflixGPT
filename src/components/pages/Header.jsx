@@ -1,14 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
-import { NETFLIX_LOGO_URL, NETFLIX_USER_ICON } from "../utils/constants";
+import { NETFLIX_LOGO_URL, SUPPORTED_LANGUAGE } from "../utils/constants";
 import { addUser, removeUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useEffect } from "react";
 import { toggleGPT } from "../utils/gptSilce";
+import { setLanguage } from "../utils/languageSlice";
+import { PiSignOutBold } from "react-icons/pi";
 
 const Header = () => {
   const user = useSelector((store) => store.user?.photoURL);
+  const gptSearch = useSelector((store) => store.gpt.toggleSwitch);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -51,23 +54,43 @@ const Header = () => {
     return () => unsubscribe(); // Clean up subscription when component unmounts
   }, []);
 
+  const handleLanguageChange = (e) => {
+    const changeValue = e.target.value;
+    dispatch(setLanguage(changeValue));
+  };
+
   return (
-    <div className="absolute px-10 py-4 w-screen bg-gradient-to-b from-black z-20 flex">
+    <div className="absolute px-10 py-2 w-screen bg-gradient-to-b from-black z-20 flex">
       <img src={NETFLIX_LOGO_URL} alt="logo_url" className="w-52" />
       {user && (
         <div className="flex items-center gap-3 ml-auto">
+          {gptSearch && (
+            <select
+              className="p-3 bg-black text-white rounded-lg"
+              onChange={handleLanguageChange}
+            >
+              {SUPPORTED_LANGUAGE.map((language) => {
+                return (
+                  <option key={language.identifier} value={language.identifier}>
+                    {language.name}
+                  </option>
+                );
+              })}
+            </select>
+          )}
+
           <button
-            className="border-1 bg-purple-700 border-black px-4 py-2 text-white text-lg font-bold rounded-md cursor-pointer"
+            className="border-1 bg-purple-700 border-black px-4 py-2 text-white font-bold rounded-md cursor-pointer"
             onClick={handleToggleSwitch}
           >
-            GPT Search
+            {gptSearch ? "Browse Here" : "GPTSearch"}
           </button>
           <img src={user} alt="logo_url" className="w-10" />
           <button
-            className="border-1 bg-white border-black px-4 py-2 text-black text-lg font-bold rounded-md cursor-pointer"
+            className="border-1 bg-white border-black px-4 py-2 text-black font-bold rounded-md cursor-pointer"
             onClick={handleSignOut}
           >
-            Sign Out
+            <PiSignOutBold className="text-2xl" />
           </button>
         </div>
       )}
