@@ -25,6 +25,10 @@ export const fetchUpCommingMovies =
 export const fetchTrendingMovies =
   "https://api.themoviedb.org/3/trending/all/day?language=en-US";
 
+export const fetchMovieDetails = (movieTitle) => {
+  return `https://api.themoviedb.org/3/search/movie?query=${movieTitle}&include_adult=false&language=en-US&page=1`;
+};
+
 export const API_OPTIONS = {
   method: "GET",
   headers: {
@@ -42,3 +46,7 @@ export const SUPPORTED_LANGUAGE = [
   { identifier: "fr", name: "French" },
   { identifier: "gr", name: "German" },
 ];
+
+export const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+
+export const GEMINI_MODEL = "gemini-1.5-pro";

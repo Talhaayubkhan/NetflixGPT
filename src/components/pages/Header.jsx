@@ -87,10 +87,10 @@ const Header = () => {
           </button>
           <img src={user} alt="logo_url" className="w-10" />
           <button
-            className="border-1 bg-white border-black px-4 py-2 text-black font-bold rounded-md cursor-pointer"
+            className="border-1 bg-white border-black px-4 py-2 text-black font-bold rounded-md cursor-pointer flex items-center justify-center gap-1"
             onClick={handleSignOut}
           >
-            <PiSignOutBold className="text-2xl" />
+            SignOut <PiSignOutBold className="text-2xl" />
           </button>
         </div>
       )}
