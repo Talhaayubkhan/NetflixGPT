@@ -32,11 +32,11 @@ import { GoInfo } from "react-icons/go";
 const VideoTitle = ({ title, overview }) => {
   return (
     <div className="w-full aspect-video absolute text-white bg-gradient-to-r from-black">
-      <div className="p-4 sm:p-6 md:p-8 lg:p-10 pt-[15%] sm:pt-[13%] md:pt-[11%] lg:pt-[10%] max-w-screen-lg">
-        <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-semibold line-clamp-2">
+      <div className="p-4 sm:p-6 md:p-8 lg:px-15 pt-[15%] sm:pt-[13%] md:pt-[17%] lg:pt-[15%] max-w-screen-lg">
+        <h1 className="text-xl sm:text-2xl md:text-2xl lg:text-6xl font-bold line-clamp-2">
           {title}
         </h1>
-        <p className="text-xs sm:text-sm md:text-base lg:text-lg w-full sm:w-3/4 md:w-2/3 lg:w-2/4 mt-1 sm:mt-2 md:mt-3 line-clamp-3 md:line-clamp-4">
+        <p className="text-xs sm:text-sm md:text-base lg:text-lg w-full sm:w-3/4 md:w-2/3 lg:w-2/2 mt-1 sm:mt-2 md:mt-3 line-clamp-3 md:line-clamp-4">
           {overview}
         </p>
         <div className="mt-2 sm:mt-3 md:mt-4 lg:mt-5 flex flex-wrap gap-2 sm:gap-3 md:gap-4">
