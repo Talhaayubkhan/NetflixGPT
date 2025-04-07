@@ -1,57 +1,61 @@
-Here's your updated **README** with Firebase authentication included:  
-
----
-
 # 🎬 NetflixGPT  
 
-NetflixGPT is a Netflix-inspired movie browsing app built with React. It combines real-time movie data with AI-powered search and user authentication for a seamless experience.  
+**NetflixGPT** is a responsive, Netflix-inspired movie browsing app that delivers a smart and smooth user experience. Built with modern frontend technologies, it offers interactive movie exploration combined with AI-powered search — all in a sleek and intuitive interface.
 
 ---
 
 ## 🌟 Features  
-✅ **Netflix-Like UI** – A sleek, interactive movie browsing experience 🎥  
-✅ **Movie Data from TMDB API** – Get details, ratings, and trailers 🍿  
-✅ **AI Search (Gemini API)** – Find movies even if you don’t remember the exact name 🤖  
-✅ **User Authentication (Firebase)** – Secure sign-up and login 🔐  
-✅ **Redux State Management** – Efficient data handling for a smooth experience 🔄  
-✅ **React Router DOM** – Seamless navigation between pages 🌐  
-✅ **Tailwind CSS** – Modern, responsive, and fast UI styling 🎨  
+
+✅ **Netflix-Style UI** – Clean, responsive layout with a dynamic video banner and movie sections  
+✅ **Real-Time Movie Data** – Browse categorized movies (Trending, Top Rated, Popular, etc.) using the TMDB API  
+✅ **AI Movie Search** – Find movies by describing them in your own words, powered by Gemini AI  
+✅ **Secure Authentication** – User sign-up and login using Firebase Authentication  
+✅ **Efficient State Management** – Managed with Redux Toolkit  
+✅ **Seamless Routing** – Smooth navigation with React Router DOM  
+✅ **Modern UI** – Styled using Tailwind CSS for a fast and mobile-friendly experience  
 
 ---
 
-## ⚡ Tech Stack  
-- **Frontend:** React, Redux, React Router DOM, Tailwind CSS  
-- **Authentication:** Firebase Authentication  
-- **APIs Used:** TMDB API (for movie data), Gemini API (for AI-powered search)  
+## ⚙️ Tech Stack  
+
+**Frontend:**  
+- React  
+- Redux Toolkit  
+- React Router DOM  
+- Tailwind CSS  
+
+**Authentication:**  
+- Firebase Authentication  
+
+**APIs Used:**  
+- TMDB API (for movie data)  
+- Gemini API (for AI-powered search)  
 
 ---
 
 ## 🚀 Getting Started  
 
 ### 1️⃣ Clone the Repository  
-```sh
+```bash
 git clone https://github.com/your-username/netflixgpt.git
 cd netflixgpt
 ```  
 
 ### 2️⃣ Install Dependencies  
-```sh
+```bash
 npm install
 ```  
 
 ### 3️⃣ Start the Development Server  
-```sh
+```bash
 npm run dev
 ```  
 
 ---
 
 ## 🔑 API Configuration  
-To use **TMDB API**, **Gemini API**, and **Firebase Authentication**, follow these steps:  
 
-1. Get an API key from [TMDB](https://www.themoviedb.org/)  
-2. Get a Gemini API key from Google AI  
-
-## 📜 License  
-This project is open-source and available under the MIT License.  
-
+To run the project, you’ll need the following API keys and setup:  
+- **TMDB API Key** – [Get it here](https://www.themoviedb.org/)  
+- **Gemini API Key** – Available from [Google AI Studio](https://aistudio.google.com/app/apikey)  
+- **Firebase Config** – Create a Firebase project, enable Authentication, and add your config values to your `.env` file  

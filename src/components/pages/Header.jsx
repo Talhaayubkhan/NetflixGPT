@@ -105,6 +105,7 @@
 
 // export default Header;
 
+// below is updated with responsiveness
 import { useDispatch, useSelector } from "react-redux";
 import { NETFLIX_LOGO_URL, SUPPORTED_LANGUAGE } from "../utils/constants";
 import { addUser, removeUser } from "../utils/userSlice";
@@ -127,7 +128,7 @@ const Header = () => {
       .then(() => {
         // Sign-out successful.
         dispatch(removeUser());
-        navigate("/login");
+        navigate("/");
       })
       .catch(() => {
         // An error happened.
@@ -167,6 +168,10 @@ const Header = () => {
     dispatch(setLanguage(changeValue));
   };
 
+  const handleImageClick = () => {
+    navigate("/");
+  };
+
   return (
     <div className="absolute w-full px-3 py-2 bg-gradient-to-b from-black z-20 sm:px-6 md:px-8 lg:px-10">
       <div className="flex flex-col items-center sm:flex-row sm:justify-between">
@@ -174,7 +179,8 @@ const Header = () => {
         <img
           src={NETFLIX_LOGO_URL}
           alt="logo_url"
-          className="w-28 mb-3 sm:w-32 md:w-40 lg:w-48 sm:mb-0"
+          className="w-28 mb-3 sm:w-32 md:w-40 lg:w-48 sm:mb-0 cursor-pointer"
+          onClick={handleImageClick}
         />
 
         {/* User controls */}
@@ -194,7 +200,7 @@ const Header = () => {
 
             {/* GPT search toggle button */}
             <button
-              className="bg-black px-2 py-1 text-white font-semibold rounded-md cursor-pointer text-sm sm:px-3 md:text-base md:px-4 md:py-2"
+              className="bg-white px-2 py-1 text-black font-semibold rounded-md cursor-pointer text-sm sm:px-3 md:text-base md:px-4 md:py-2"
               onClick={handleToggleSwitch}
             >
               {gptSearch ? "Browse Here" : "GPT-Search"}

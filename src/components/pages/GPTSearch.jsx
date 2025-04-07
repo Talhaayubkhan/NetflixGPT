@@ -39,7 +39,7 @@ const GPTSearch = () => {
           alt="bg_img"
         />
       </div>
-      <div className="pt-20 sm:pt-24 md:pt-28 lg:pt-32">
+      <div className="pt-35 sm:pt-35 md:pt-35 lg:pt-35">
         <InputSearchGPT />
         <GPTMoviesSuggestions />
       </div>

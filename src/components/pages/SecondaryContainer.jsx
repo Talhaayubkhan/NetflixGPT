@@ -24,7 +24,7 @@
 
 // export default SecondaryContainer;
 
-// SecondaryContainer.jsx
+// below is update with responsiveness
 import React from "react";
 import MovieList from "./MovieList";
 import { useSelector } from "react-redux";
@@ -35,8 +35,8 @@ const SecondaryContainer = () => {
 
   return (
     movies && (
-      <div className="bg-black p-4 sm:p-6 md:p-12 lg:p-16 xl:p-20">
-        <div className="-mt-12 sm:-mt-16 md:-mt-20 lg:-mt-[15rem] xl:-mt-[20rem] z-20 relative">
+      <div className="bg-black p-4 sm:p-6 md:p-8 lg:p-12 xl:p-20">
+        <div className="-mt-10 sm:-mt-16 md:-mt-24 lg:-mt-32 xl:-mt-[20rem] z-20 relative">
           <MovieList title={"Trending"} movies={movies?.trendingMovies} />
           <MovieList title={"Now Playing"} movies={movies?.nowPlayingMovies} />
           <MovieList title={"Popular"} movies={movies?.popularMovies} />

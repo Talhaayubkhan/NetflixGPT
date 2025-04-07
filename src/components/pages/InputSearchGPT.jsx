@@ -48,7 +48,7 @@
 
 // export default InputSearchGPT;
 
-// InputSearchGPT.jsx
+// below is updated with responsiveness
 import { FaSearch, FaTrash } from "react-icons/fa";
 import { langConst } from "../utils/languageConstants";
 import { useDispatch, useSelector } from "react-redux";

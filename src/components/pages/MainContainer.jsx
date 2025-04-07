@@ -20,7 +20,7 @@
 
 // export default MainContainer;
 
-// MainContainer.jsx
+// below is updated with responsiveness
 import React from "react";
 import VideoBackground from "./VideoBackground";
 import VideoTitle from "./VideoTitle";
