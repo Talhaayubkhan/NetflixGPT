@@ -179,7 +179,7 @@ const Header = () => {
         <img
           src={NETFLIX_LOGO_URL}
           alt="logo_url"
-          className="w-28 mb-3 sm:w-32 md:w-40 lg:w-48 sm:mb-0 cursor-pointer"
+          className="w-32 sm:w-32 md:w-40 lg:w-48 sm:mb-0 cursor-pointer"
           onClick={handleImageClick}
         />
 
@@ -200,7 +200,7 @@ const Header = () => {
 
             {/* GPT search toggle button */}
             <button
-              className="bg-white px-2 py-1 text-black font-semibold rounded-md cursor-pointer text-sm sm:px-3 md:text-base md:px-4 md:py-2"
+              className="bg-white px-2 py-1 text-black font-semibold rounded-md cursor-pointer text-xs sm:px-3 md:text-base md:px-4 md:py-2"
               onClick={handleToggleSwitch}
             >
               {gptSearch ? "Browse Here" : "GPT-Search"}

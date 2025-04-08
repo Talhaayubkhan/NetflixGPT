@@ -51,7 +51,7 @@ const MovieList = ({ movies, title }) => {
   if (!movies) return null;
 
   return (
-    <div className="px-1 sm:px-2 mb-3 sm:mb-4 md:mb-6">
+    <div className="px-1 sm:px-2 mb-2 sm:mb-4 md:mb-6">
       <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl py-2 sm:py-3 md:py-4 font-bold text-white">
         {title}
       </h1>
