@@ -44,7 +44,7 @@
 // export default MovieList;
 
 // below is updated with responsiveness
-import React from "react";
+import React, { useState } from "react";
 import MovieCard from "./MovieCard";
 
 const MovieList = ({ movies, title }) => {

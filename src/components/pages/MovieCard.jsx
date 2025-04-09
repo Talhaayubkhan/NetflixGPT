@@ -40,7 +40,6 @@
 // export default MovieCard;
 
 // below is updated with responsiveness
-import React from "react";
 import { IMG_URL } from "../utils/constants";
 
 const MovieCard = ({ posterPath }) => {

@@ -187,16 +187,18 @@ const Header = () => {
         {user && (
           <div className="flex flex-wrap items-center justify-center gap-2 w-full sm:w-auto sm:justify-end sm:ml-auto">
             {/* Language selector */}
-            <select
-              className="p-1 bg-black text-white rounded-lg text-sm sm:p-2 md:text-base"
-              onChange={handleLanguageChange}
-            >
-              {SUPPORTED_LANGUAGE.map((language) => (
-                <option key={language.identifier} value={language.identifier}>
-                  {language.name}
-                </option>
-              ))}
-            </select>
+            {gptSearch && (
+              <select
+                className="p-1 bg-black text-white rounded-lg text-sm sm:p-2 md:text-base"
+                onChange={handleLanguageChange}
+              >
+                {SUPPORTED_LANGUAGE.map((language) => (
+                  <option key={language.identifier} value={language.identifier}>
+                    {language.name}
+                  </option>
+                ))}
+              </select>
+            )}
 
             {/* GPT search toggle button */}
             <button
