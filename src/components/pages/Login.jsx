@@ -96,63 +96,6 @@ const Login = () => {
     }
   };
 
-  // return (
-  //   <div>
-  //     <Header />
-  //     <div className="absolute w-screen h-screen">
-  //       <img
-  //         src={NETFLIX_BACKGROUND_IMG}
-  //         className="w-full h-full object-cover"
-  //         alt="logo"
-  //       />
-  //     </div>
-  //     <form
-  //       onSubmit={(e) => e.preventDefault()}
-  //       className="absolute w-3/12 my-28 mx-auto right-0 left-0 p-6 bg-black text-white rounded-lg opacity-70"
-  //     >
-  //       <h1 className="font-bold text-4xl py-4">
-  //         {isSignInForm ? "Sign In" : "Sign Up"}
-  //       </h1>
-  //       {!isSignInForm && (
-  //         <input
-  //           ref={fullName}
-  //           type="text"
-  //           placeholder="Full Name"
-  //           className="p-4 my-4 w-full border border-white font-semibold rounded-md"
-  //         />
-  //       )}
-  //       <input
-  //         ref={email}
-  //         type="text"
-  //         placeholder="Email"
-  //         className="p-4 my-4 w-full border border-white font-semibold rounded-md"
-  //       />
-  //       <input
-  //         ref={password}
-  //         type="password"
-  //         placeholder="Password"
-  //         className="p-4 my-4 w-full border border-white  font-semibold rounded-md"
-  //       />
-  //       <p className="text-red-700 font-bold text-lg">{isError}</p>
-  //       <button
-  //         className="p-3 my-6 bg-red-700 text-lg font-bold w-full rounded-md"
-  //         onClick={handleButton}
-  //       >
-  //         {isSignInForm ? "Sign In" : "Sign Up"}
-  //       </button>
-  //       <p className="text-lg">
-  //         {isSignInForm ? "New To Netlfix?" : "Already have Account?"}
-  //         <span
-  //           className="text-white font-bold cursor-pointer px-1"
-  //           onClick={handleToggleSwitch}
-  //         >
-  //           {!isSignInForm ? "Sign In" : "Sign Up"}
-  //         </span>
-  //       </p>
-  //     </form>
-  //   </div>
-  // );
-
   return (
     <div>
       <Header />

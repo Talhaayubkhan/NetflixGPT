@@ -13,6 +13,10 @@ export const NETFLIX_USER_ICON =
 export const NETFLIX_AVATAR_URL =
   "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg";
 
+export const fetchCurrentMovieId = (videoId) => {
+  return `https://api.themoviedb.org/3/movie/${videoId}/videos?language=en-US`;
+};
+
 export const fetchNowPlayingMovies =
   "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
 
