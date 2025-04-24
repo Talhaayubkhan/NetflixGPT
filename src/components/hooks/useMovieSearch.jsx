@@ -1,10 +1,11 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { model } from "../utils/gemini";
 import { API_OPTIONS, fetchMovieDetails } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { geminiMovieResults } from "../utils/gptSilce";
 
 export const useMovieSearch = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const currentSearchInput = useRef();
   const dispatch = useDispatch();
 
@@ -15,8 +16,13 @@ export const useMovieSearch = () => {
   };
 
   const searchMovies = async () => {
+    setIsLoading(true);
     const searchQuery = currentSearchInput.current.value;
-    const recommendationPrompt = `Please recommend great movies related to ${searchQuery} and Respond in the same language as my query. Provide titles in a comma-separated list, organized by relevance or popularity. If my query is in a non-English language, please understand it and provide appropriate recommendations.`;
+    const recommendationPrompt = `Given the query: ${searchQuery}, recommend a list of relevant, popular movie titles. 
+  - For English queries, provide English-language movies.
+  - For non-English queries, suggest region-appropriate films or international hits.
+  - Return only titles, comma-separated, sorted by relevance or popularity.
+  - If the query is unclear, suggest movies based on common themes or genres`;
 
     // Call Gemini API to get movie suggestions
     try {
@@ -39,13 +45,15 @@ export const useMovieSearch = () => {
       );
     } catch (error) {
       console.error("Error fetching movie data:", error);
+    } finally {
+      setIsLoading(false); // End loading no matter what
+      currentSearchInput.current.value = "";
     }
-    // Clear the search input field
-    currentSearchInput.current.value = "";
   };
 
   return {
     currentSearchInput,
     searchMovies,
+    isLoading,
   };
 };

@@ -33,7 +33,7 @@ const MainContainer = () => {
   const { original_title, overview, id } = videos[0];
 
   return (
-    <div className="relative w-full">
+    <div className="relative">
       <VideoTitle title={original_title} overview={overview} />
       <VideoBackground videoId={id} />
     </div>

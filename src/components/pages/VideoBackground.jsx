@@ -62,7 +62,6 @@ const VideoBackground = ({ videoId }) => {
         className="w-full aspect-video"
         src={`https://www.youtube.com/embed/${trailerVideo}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1`}
         title="Video Background"
-        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       ></iframe>

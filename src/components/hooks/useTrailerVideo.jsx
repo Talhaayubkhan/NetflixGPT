@@ -13,16 +13,13 @@ export const useTrailerVideo = (videoId) => {
 
     const response = await fetch(apiUrl, API_OPTIONS);
     const jsonResponse = await response.json();
-    // console.log(response);
     const trailerVideos = jsonResponse?.results?.filter(
       (trailer) => trailer.type === "Trailer"
     );
-    // console.log(trailerVideos);
 
     const firstTrailerVideo = trailerVideos.length
       ? trailerVideos[0]
       : jsonResponse.results[0];
-    // console.log(firstTrailerVideo);
     dispatch(addTrailerVideo(firstTrailerVideo));
   };
 

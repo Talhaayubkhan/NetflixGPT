@@ -1,54 +1,3 @@
-// import { FaSearch, FaTrash } from "react-icons/fa";
-// import { langConst } from "../utils/languageConstants";
-// import { useDispatch, useSelector } from "react-redux";
-// import { useMovieSearch } from "../hooks/useMovieSearch";
-// import { clearGPTMovieResults } from "../utils/gptSilce";
-
-// const InputSearchGPT = () => {
-//   const dispatch = useDispatch();
-//   const currentLang = useSelector((store) => store?.lang?.currentLang);
-//   const { currentSearchInput, searchMovies } = useMovieSearch();
-
-//   const handlClearMovieResults = () => {
-//     dispatch(clearGPTMovieResults());
-//   };
-
-//   return (
-//     <div className="pt-[10%] flex justify-center">
-//       <form
-//         className="w-3/6 flex gap-4 p-4 bg-gray-900 rounded-xl shadow-lg"
-//         onSubmit={(e) => e.preventDefault()}
-//       >
-//         <input
-//           ref={currentSearchInput}
-//           type="text"
-//           placeholder={langConst[currentLang]?.gptSearchPlaceHolder}
-//           className="flex-grow px-6 py-3 bg-white text-black rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-//         />
-//         <button
-//           type="submit"
-//           className="bg-red-700 hover:bg-red-800 text-white font-bold px-6 py-3 rounded-lg flex items-center gap-2 transition-colors"
-//           onClick={searchMovies}
-//         >
-//           <span>{langConst[currentLang]?.search}</span>
-//           <FaSearch />
-//         </button>
-//         <button
-//           className="bg-gray-700 hover:bg-gray-800 text-white font-bold px-6 py-3 rounded-lg flex items-center gap-2 transition-colors"
-//           onClick={handlClearMovieResults}
-//         >
-//           <span>{langConst[currentLang]?.clear}</span>
-
-//           <FaTrash />
-//         </button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default InputSearchGPT;
-
-// below is updated with responsiveness
 import { FaSearch, FaTrash } from "react-icons/fa";
 import { langConst } from "../utils/languageConstants";
 import { useDispatch, useSelector } from "react-redux";
@@ -58,7 +7,7 @@ import { clearGPTMovieResults } from "../utils/gptSilce";
 const InputSearchGPT = () => {
   const dispatch = useDispatch();
   const currentLang = useSelector((store) => store?.lang?.currentLang);
-  const { currentSearchInput, searchMovies } = useMovieSearch();
+  const { currentSearchInput, searchMovies, isLoading } = useMovieSearch();
 
   const handlClearMovieResults = () => {
     dispatch(clearGPTMovieResults());
@@ -98,6 +47,11 @@ const InputSearchGPT = () => {
           </button>
         </div>
       </form>
+      {isLoading && (
+        <div className="absolute top-[50%]">
+          <div className="w-20 h-20 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      )}
     </div>
   );
 };

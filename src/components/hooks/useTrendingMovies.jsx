@@ -10,7 +10,6 @@ const useTrendingMovies = () => {
   const getTrendingMovies = async () => {
     const data = await fetch(fetchTrendingMovies, API_OPTIONS);
     const jsonData = await data.json();
-    // console.log(jsonData.results);
     dispatch(addTrendingMovies(jsonData.results));
   };
 

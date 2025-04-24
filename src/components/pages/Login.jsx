@@ -70,7 +70,6 @@ const Login = () => {
                 // ..
               });
 
-            // console.log(user);
           })
           .catch((error) => {
             const errorCode = error.code;
