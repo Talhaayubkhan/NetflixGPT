@@ -9,47 +9,49 @@ const InputSearchGPT = () => {
   const currentLang = useSelector((store) => store?.lang?.currentLang);
   const { currentSearchInput, searchMovies, isLoading } = useMovieSearch();
 
-  const handlClearMovieResults = () => {
+  const handleClearMovieResults = () => {
     dispatch(clearGPTMovieResults());
   };
 
   return (
-    <div className="flex justify-center px-5 sm:px-6 md:px-8">
+    <div className="relative flex justify-center p-4 sm:p-6 md:p-8">
       <form
-        className="w-full flex flex-col sm:flex-row gap-2 p-3 bg-gray-900 rounded-xl shadow-lg max-w-4xl sm:gap-3 md:gap-4 md:p-5"
+        className="w-full flex flex-col sm:flex-row gap-3 p-4 bg-gray-900 rounded-2xl shadow-2xl max-w-5xl"
         onSubmit={(e) => e.preventDefault()}
       >
-        <input
-          ref={currentSearchInput}
-          type="text"
-          placeholder={langConst[currentLang]?.gptSearchPlaceHolder}
-          className="w-full px-3 py-2 bg-white text-black rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-red-500 md:px-6 md:py-3 md:text-lg"
-        />
-        <div className="flex gap-2 sm:gap-3 md:gap-4">
+        <div className="flex flex-1">
+          <input
+            ref={currentSearchInput}
+            type="text"
+            placeholder={langConst[currentLang]?.gptSearchPlaceHolder}
+            className="flex-1 px-4 py-3 bg-white text-black rounded-l-lg text-base focus:outline-none focus:ring-2 focus:ring-red-500 md:text-lg transition-all duration-300"
+          />
           <button
             type="submit"
-            className="flex-1 sm:flex-none bg-red-700 hover:bg-red-800 text-white font-bold px-3 py-2 rounded-lg flex items-center justify-center gap-1 transition-colors md:px-6 md:py-3"
             onClick={searchMovies}
+            className="bg-red-600 hover:bg-red-700 active:scale-95 text-white font-semibold px-5 py-3 rounded-r-lg flex items-center justify-center gap-2 transition-all duration-300"
           >
-            <span className="text-sm md:text-base">
+            <FaSearch />
+            <span className="hidden sm:inline">
               {langConst[currentLang]?.search}
             </span>
-            <FaSearch />
-          </button>
-          <button
-            className="flex-1 sm:flex-none bg-gray-700 hover:bg-gray-800 text-white font-bold px-3 py-2 rounded-lg flex items-center justify-center gap-1 transition-colors md:px-6 md:py-3"
-            onClick={handlClearMovieResults}
-          >
-            <span className="text-sm md:text-base">
-              {langConst[currentLang]?.clear}
-            </span>
-            <FaTrash />
           </button>
         </div>
+        <button
+          type="button"
+          onClick={handleClearMovieResults}
+          className="w-full sm:w-auto bg-gray-700 hover:bg-gray-800 active:scale-95 text-white font-semibold px-5 py-3 rounded-lg flex items-center justify-center gap-2 transition-all duration-300"
+        >
+          <FaTrash />
+          <span className="text-sm md:text-base">
+            {langConst[currentLang]?.clear}
+          </span>
+        </button>
       </form>
+
       {isLoading && (
-        <div className="absolute top-[50%]">
-          <div className="w-20 h-20 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
+        <div className="absolute inset-0 flex items-center justify-center mt-60">
+          <div className="w-16 h-16 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
         </div>
       )}
     </div>

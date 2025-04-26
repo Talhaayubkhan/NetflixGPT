@@ -1,27 +1,3 @@
-// import React from "react";
-// import { useSelector } from "react-redux";
-// import MovieList from "./MovieList";
-
-// const GPTMoviesSuggestions = () => {
-//   const { movieTitles, movieResults } = useSelector((store) => store?.gpt);
-//   if (!movieTitles) return;
-//   return (
-//     <>
-//       <div className="p-4 m-4 bg-black text-white opacity-85">
-//         {movieTitles.map((movieName, index) => (
-//           <MovieList
-//             key={movieName}
-//             title={movieName}
-//             movies={movieResults[index]}
-//           />
-//         ))}
-//       </div>
-//     </>
-//   );
-// };
-
-// export default GPTMoviesSuggestions;
-// GPTMoviesSuggestions.jsx
 import React from "react";
 import { useSelector } from "react-redux";
 import MovieList from "./MovieList";
@@ -32,7 +8,7 @@ const GPTMoviesSuggestions = () => {
   if (!movieTitles) return null;
 
   return (
-    <div className="p-2 mx-2 mt-4 bg-black text-white opacity-80 rounded sm:p-3 sm:mx-3 md:p-4 md:mx-4 lg:mx-6">
+    <div className="p-4 sm:p-6 md:p-8 mx-2 sm:mx-4 md:mx-6 mt-6 bg-black/70 backdrop-blur-md text-white rounded-2xl shadow-2xl animate-fade-in">
       {movieTitles.map((movieName, index) => (
         <MovieList
           key={movieName}

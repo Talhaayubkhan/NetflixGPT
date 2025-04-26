@@ -2,6 +2,7 @@ import { useState } from "react";
 import MovieCard from "./MovieCard";
 import { IoClose } from "react-icons/io5";
 import { API_OPTIONS, fetchCurrentMovieId } from "../utils/constants";
+import { FaTrash } from "react-icons/fa";
 
 const MovieList = ({ movies, title }) => {
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -50,7 +51,7 @@ const MovieList = ({ movies, title }) => {
       </div>
 
       {selectedMovie && (
-        <div className="fixed inset-0 bg-black opacity-95 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl shadow-2xl overflow-hidden w-full max-w-2xl relative animate-fadeIn">
             <button
               onClick={closePopup}
@@ -61,11 +62,11 @@ const MovieList = ({ movies, title }) => {
 
             <div className="p-6 sm:p-8 space-y-5">
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-                {selectedMovie.title}
+                {selectedMovie?.title || "No Title Availble Now"}
               </h2>
 
               <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
-                {selectedMovie?.overview || "No description available."}
+                {selectedMovie?.overview || "No Description Available"}
               </p>
 
               <p className="text-gray-600 font-medium text-sm sm:text-base">
@@ -79,14 +80,14 @@ const MovieList = ({ movies, title }) => {
                     className="w-full rounded-xl aspect-video"
                     src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1&controls=1`}
                     title="Movie Trailer"
-                    frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
                 </div>
               ) : (
-                <div className="text-center text-red-600 font-semibold text-xl mt-6">
-                  🚫 Trailer not available
+                <div className="flex flex-col items-center gap-2 text-red-500 font-semibold text-lg mt-6">
+                  <FaTrash className="text-3xl" />
+                  <span>Trailer not available</span>
                 </div>
               )}
             </div>
