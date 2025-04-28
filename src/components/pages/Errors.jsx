@@ -1,50 +1,52 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { TbError404 } from "react-icons/tb";
+import { useNavigate, Link } from "react-router-dom";
 
-const Errors = () => {
+const Error = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-black flex items-center justify-center px-6 py-12 text-white">
       <div className="max-w-lg w-full text-center">
-        {/* Error Icon */}
-        <div className="flex justify-center items-center text-red-900">
-          <TbError404 className="text-9xl" />
+        {/* Netflix-style error presentation */}
+        <div className="mb-8">
+          <div className="text-red-600 text-8xl font-bold mb-6">404</div>
+          <h1 className="text-3xl font-medium mb-4">Lost your way?</h1>
+          <p className="text-gray-400 text-lg mb-2">
+            Sorry, we can't find that page. You'll find lots to explore on the
+            home page.
+          </p>
+          <p className="text-gray-500 text-sm">Error Code: NSES-404</p>
         </div>
 
-        {/* Error Message */}
-        <h1 className="text-4xl font-bold text-red-800 mb-4">
-          Oops! Something went wrong
-        </h1>
-        <p className="text-gray-500 text-xl font-bold mb-8">
-          We're sorry, but we're having trouble processing your request. Please
-          try again later.
-        </p>
-
-        {/* Action Buttons */}
-        <div className="space-x-4">
-          <button
-            onClick={() => navigate("/login")}
-            className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded-md transition-all duration-300"
+        {/* Action buttons - Netflix style */}
+        <div className="flex flex-col gap-4 mb-12">
+          <Link
+            to="/"
+            className="bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded"
           >
-            Login
-          </button>
+            Netflix Home
+          </Link>
           <button
-            onClick={() => navigate("/browse")}
-            className="bg-gray-700 hover:bg-gray-600 text-white font-bold px-6 py-3 rounded-md transition-all duration-300"
+            onClick={() => navigate(-1)}
+            className="bg-transparent border border-gray-600 hover:border-gray-400 text-gray-300 hover:text-white font-medium py-3 px-6 rounded transition-colors duration-300"
           >
-            Browse Page
+            Go Back
           </button>
         </div>
 
-        {/* Error Code */}
-        <p className="mt-5 text-xl font-semibold text-red-800">
-          Error Code: 500
-        </p>
+        {/* Help options */}
+        <div className="text-center">
+          <p className="text-gray-500 text-sm mb-3">Need more help?</p>
+          <Link
+            to="/help"
+            className="text-gray-300 hover:text-white underline text-sm"
+          >
+            Visit the Netflix Help Center
+          </Link>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Errors;
+export default Error;
