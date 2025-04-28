@@ -61,7 +61,7 @@ const Header = () => {
   };
 
   const handleImageClick = () => {
-    navigate("/");
+    navigate("/browse");
   };
 
   return (
