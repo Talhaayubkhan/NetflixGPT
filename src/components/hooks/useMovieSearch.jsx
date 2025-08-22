@@ -23,7 +23,7 @@ export const useMovieSearch = () => {
   - For non-English queries, suggest region-appropriate films or international hits.
   - Return only titles, comma-separated, sorted by relevance or popularity.
   - If the query is unclear, suggest movies based on common themes or genres`;
-    w;
+
     // Call Gemini API to get movie suggestions
     try {
       const geminiResponse = await model.generateContent([

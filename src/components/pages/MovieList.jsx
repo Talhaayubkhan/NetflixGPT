@@ -16,6 +16,9 @@ const MovieList = ({ movies, title }) => {
       const response = await fetch(apiUrl, API_OPTIONS);
       const data = await response.json();
 
+      // The find() method in JavaScript is used on arrays to efficiently locate the first element that satisfies a specified condition
+      // Unlike filter(), which returns a new array containing all matching elements, find()
+      // becuse we find directly the trailer only! we use find here!
       const trailer =
         data?.results?.find((video) => video.type === "Trailer") ||
         data.results[0];
